@@ -1,1 +1,1 @@
-Lógica de programação com orientação a objetos usando Java
+Programação orientada a objetos usando Java
