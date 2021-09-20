@@ -6,7 +6,7 @@ import java.util.Random;
 
 import figures.*;
 
-class ListApp {
+class Projeto {
     public static void main (String[] args) {
         ListFrame frame = new ListFrame();
         frame.setVisible(true);
@@ -14,7 +14,7 @@ class ListApp {
 }
 
 class ListFrame extends JFrame {
-    ArrayList<Figure> figs = new ArrayList<Figure>();
+    ArrayList<FigureP> figs = new ArrayList<FigureP>();
     Random rand = new Random();
 
     ListFrame () {

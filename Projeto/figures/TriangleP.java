@@ -2,12 +2,12 @@ package figures;
 
 import java.awt.*;
 
-public class Triangle extends Figure {
+public class TriangleP extends FigureP {
     int x1, y1;
     int x2, y2;
     int x3, y3;
     
-    public Triangle(int x1, int y1, int x2, int y2, int x3, int y3) {
+    public TriangleP(int x1, int y1, int x2, int y2, int x3, int y3) {
         this.x1 = x1;
         this.y1 = y1;
 
@@ -30,7 +30,7 @@ public class Triangle extends Figure {
         int x[] = {this.x1, this.x2, this.x3};
         int y[] = {this.y1, this.y2, this.y3};
 
-        Polygon Triangle = new Polygon(x, y, 3);
+        Polygon TriangleP = new Polygon(x, y, 3);
 
         g2d.drawLine(this.x1, this.y1, this.x2, this.y2);
         g2d.drawLine(this.x2, this.y2, this.x3, this.y3);
