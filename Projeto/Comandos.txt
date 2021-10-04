@@ -1,9 +1,7 @@
 'r'  =  cria um retângulo na tela.
-'R'  =  cria um retângulo arredondado na tela.
 'e'  =  cria uma elipse na tela.
 's'  =  cria uma estrela na tela.
 't'  =  cria um triângulo na tela.
-'p'  =  cria um pentagono na tela.
 '+'  =  amplia a figura em foco.
 '-'  =  diminui a figura em foco.
 'c'  =  muda a cor de fundo da figura em foco.
