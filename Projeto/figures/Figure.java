@@ -5,8 +5,7 @@ import java.awt.Graphics;
 import java.io.Serializable;
 import ivisible.IVisible;
 
-public  abstract class Figure implements IVisible, Serializable{
-	private static final long serialVersionUID = 1L;
+public abstract class Figure{
 	private int x;
 	private int y;
 	private int w;

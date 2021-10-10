@@ -7,8 +7,6 @@ import java.awt.Color;
 
 
 public class Ellipse extends Figure{
-    private static final long serialVersionUID = 1L;
-   
 	public Ellipse (int x, int y, int w, int h, Color border, Color fill){
     	super(x,y,w,h,border,fill);
     }

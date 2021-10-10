@@ -16,7 +16,6 @@ class ProjectApp{
 }
 
 class Frame extends JFrame{
-	private static final long serialVersionUID = 1L;//identificador de versão
 	ArrayList<Figure> figs = new ArrayList<Figure>();
 	ArrayList<Button> buts = new ArrayList<Button>();
     
@@ -36,15 +35,8 @@ class Frame extends JFrame{
     
 	@SuppressWarnings("unchecked")
 	Frame(){
-    	try {
-    		FileInputStream f = new FileInputStream("proj.bin");
-    		ObjectInputStream o = new ObjectInputStream(f);
-    		this.figs = (ArrayList<Figure>) o.readObject();
-    		o.close();
-    		
-    	} catch (Exception x) {
-    		System.out.println("ERRO!");
-    	}//Menu
+    	
+    	//Menu
     	buts.add(new ButtonRect(1, new Rect(20, 90, 30, 30, Color.BLACK, Color.BLACK)));
     	buts.add(new ButtonEllipse(2, new Ellipse(20,130,30,30, Color.BLACK, Color.BLACK)));
     	buts.add(new ButtonTriangle(4, new Triangle(60,90,30,30, Color.BLACK, Color.BLACK)));
@@ -56,16 +48,6 @@ class Frame extends JFrame{
         this.addWindowListener(
             new WindowAdapter(){
                 public void windowClosing(WindowEvent e){
-                	try {
-                		FileOutputStream f = new FileOutputStream("proj.bin");
-                		ObjectOutputStream o = new ObjectOutputStream(f);
-                		o.writeObject(figs);
-                		o.flush();
-                		o.close();
-                		
-                	} catch (Exception x){
-                		
-                	}
                     System.exit(0);
                 }
             }
@@ -103,15 +85,15 @@ class Frame extends JFrame{
                     		Ffocus.setH(Ffocus.getH() - Ffocus.getH()/10);
                         	Ffocus.setW(Ffocus.getW() - Ffocus.getW()/10);
                     	}
-                    } else if(evt.getKeyCode() == KeyEvent.VK_UP){
+                    } else if(evt.getKeyCode() == KeyEvent.VK_UP){//MOVE PARA CIMA
                     	Ffocus.setY(Ffocus.getY() - 1);
-                    } else if(evt.getKeyCode() == KeyEvent.VK_DOWN){
+                    } else if(evt.getKeyCode() == KeyEvent.VK_DOWN){//MOVE PARA BAIXO
                     	Ffocus.setY(Ffocus.getY() + 1);
-                    } else if(evt.getKeyCode() == KeyEvent.VK_LEFT){
+                    } else if(evt.getKeyCode() == KeyEvent.VK_LEFT){//MOVE PARA A ESQUERDA
                     	Ffocus.setX(Ffocus.getX() - 1); 
-                    } else if(evt.getKeyCode() == KeyEvent.VK_RIGHT){
+                    } else if(evt.getKeyCode() == KeyEvent.VK_RIGHT){//MOVE PARA A DIREIRA
                     	Ffocus.setX(Ffocus.getX() + 1);
-                    } else if(evt.getExtendedKeyCode() == KeyEvent.VK_SPACE){
+                    } else if(evt.getExtendedKeyCode() == KeyEvent.VK_SPACE){//ALTERNA ENTRE AS FIGURAS
                     	if(figs.size() > 0) {
                     		if(Ffocus == null) {
                     			Ffocus = figs.get(0);

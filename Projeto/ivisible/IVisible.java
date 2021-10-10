@@ -2,8 +2,9 @@ package ivisible;
 
 import java.awt.Graphics;
 
-
-public interface IVisible {
-	public boolean clicked (int x, int y);
-	public void paint (Graphics g, boolean focused);
+public abstract class IVisible {
+	public abstract boolean clicked (int x, int y);
+	public abstract void paint (Graphics g, boolean focused);	
 }
+
+

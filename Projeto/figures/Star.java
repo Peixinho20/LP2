@@ -6,7 +6,6 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 
 public class Star extends Figure{
-	private static final long serialVersionUID = 1L;
 	public Polygon polygon;
 
 	public Star(int x, int y, int w, int h, Color border, Color fill){

@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import figures.Figure;
 import ivisible.IVisible;
 
-public class Button implements IVisible{
+public class Button extends IVisible{
 	private int idx;
 	private Figure fig;
 	

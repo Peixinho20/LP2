@@ -4,8 +4,6 @@ import java.awt.*;
 import java.awt.Graphics;
 
 public class Rect extends Figure{
-	private static final long serialVersionUID = 1L;
-
 	public Rect(int x, int y, int w, int h, Color border, Color fill){
         super(x, y, w, h, border, fill);
     }
