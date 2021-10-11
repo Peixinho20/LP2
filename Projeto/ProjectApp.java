@@ -33,7 +33,6 @@ class Frame extends JFrame{
             Color.RED, Color.YELLOW, Color.PINK	
     };
     
-	@SuppressWarnings("unchecked")
 	Frame(){
     	
     	//Menu
