@@ -25,34 +25,12 @@ class ListFrame extends JFrame {
     int dx,dy;
     int contcontorno=1;
     int contpreenchimento=0;
-    Color cores[] = {Color.WHITE, Color.BLACK, Color.BLUE, Color.CYAN, Color.DARK_GRAY,
-            Color.GREEN, Color.LIGHT_GRAY, Color.MAGENTA, Color.ORANGE, Color.GRAY,
-<<<<<<< HEAD
-            Color.RED, Color.YELLOW, Color.PINK	};
+    Color cores[] = {Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.MAGENTA, Color.CYAN, Color.WHITE, Color.BLACK, Color.GRAY, Color.LIGHT_GRAY, Color.DARK_GRAY, Color.PINK, Color.ORANGE};
 
     ListFrame () {
         this.addWindowListener (
             new WindowAdapter() {
                 public void windowClosing (WindowEvent e) {
-=======
-            Color.RED, Color.YELLOW, Color.PINK	
-    };
-    
-	Frame(){
-    	
-    	//Menu
-    	buts.add(new ButtonRect(1, new Rect(20, 90, 30, 30, Color.BLACK, Color.BLACK)));
-    	buts.add(new ButtonEllipse(2, new Ellipse(20,130,30,30, Color.BLACK, Color.BLACK)));
-    	buts.add(new ButtonTriangle(4, new Triangle(60,90,30,30, Color.BLACK, Color.BLACK)));
-    	buts.add(new ButtonStar(6, new Star(60,130,30,30, Color.BLACK, Color.BLACK)));
-    	buts.add(new ButtonDelete(7, new Rect(20, 170, 70, 20, Color.BLACK, Color.BLACK)));
-    	buts.add(new ButtonDeleteAll(8, new Rect(20, 200, 70, 20, Color.BLACK, Color.BLACK)));
-    	buts.add(new ButtonChangeColor(9, new Rect(20, 230, 70, 20, Color.BLACK, Color.BLACK)));
-    	
-        this.addWindowListener(
-            new WindowAdapter(){
-                public void windowClosing(WindowEvent e){
->>>>>>> 157f6625134312dbae5a0a31c1f962cccb23ffbe
                     System.exit(0);
                 }
             }
@@ -72,7 +50,6 @@ class ListFrame extends JFrame {
                                 dy = focus.y - pMouse.y;
                             }
                         }
-<<<<<<< HEAD
                         if (focus!=null){
                             figs.remove(focus);
                             figs.add(focus);
@@ -80,59 +57,6 @@ class ListFrame extends JFrame {
                         repaint();
                         
                     }catch(Exception x){}
-=======
-                    } else if(evt.getKeyChar() == '-'){
-                    	if(Ffocus.getW() > 0 && Ffocus.getH() > 0) {
-                    		Ffocus.setH(Ffocus.getH() - Ffocus.getH()/10);
-                        	Ffocus.setW(Ffocus.getW() - Ffocus.getW()/10);
-                    	}
-                    } else if(evt.getKeyCode() == KeyEvent.VK_UP){//MOVE PARA CIMA
-                    	Ffocus.setY(Ffocus.getY() - 1);
-                    } else if(evt.getKeyCode() == KeyEvent.VK_DOWN){//MOVE PARA BAIXO
-                    	Ffocus.setY(Ffocus.getY() + 1);
-                    } else if(evt.getKeyCode() == KeyEvent.VK_LEFT){//MOVE PARA A ESQUERDA
-                    	Ffocus.setX(Ffocus.getX() - 1); 
-                    } else if(evt.getKeyCode() == KeyEvent.VK_RIGHT){//MOVE PARA A DIREIRA
-                    	Ffocus.setX(Ffocus.getX() + 1);
-                    } else if(evt.getExtendedKeyCode() == KeyEvent.VK_SPACE){//ALTERNA ENTRE AS FIGURAS
-                    	if(figs.size() > 0) {
-                    		if(Ffocus == null) {
-                    			Ffocus = figs.get(0);
-                    		}
-                    		Ffocus = null;
-                        	if(aux == 0) {
-                        		Ffocus = figs.get(figs.size() - 1);
-                        	}
-                        	Ffocus = null;
-                        	if(aux >= figs.size()) {
-                        		aux = 0;
-                        	}
-                        	if(aux != 0) {
-                        		Ffocus = figs.get(aux);
-                        	}   	
-                        	Ffocus = figs.get(aux);
-                        	Ffocus.setContour(Color.red);
-                        	figs.remove(Ffocus);
-                        	figs.add(Ffocus);
-                        	aux += 1;
-                    	}
-                    } else if(evt.getKeyChar() == 'c'){
-                    	Ffocus.setFill(colors[colorPaintAux]);
-                    	colorPaintAux += 1;
-                    	if(colorPaintAux >= 12) {
-                    		colorPaintAux = 0;
-                    	}
-                    } else if(evt.getKeyChar() == 'p'){
-                    	Ffocus.setBorder(colors[colorPaintAux]);
-                    	colorPaintAux += 1;
-                    	if(colorPaintAux >= 12) {
-                    		colorPaintAux = 0;
-                    	}
-                    } else if(evt.getKeyChar() == 'b'){
-                    	Bfocus = null;
-                    }
-                    repaint();
->>>>>>> 157f6625134312dbae5a0a31c1f962cccb23ffbe
                 }
             }
         );
@@ -175,8 +99,8 @@ class ListFrame extends JFrame {
                         figs.add(new Triangle(x,y,w,h,Color.green,Color.black));
                         
                     }
-                    else if (evt.getKeyChar() == 's'){
-                        figs.add(new Star(x,y,w,h,Color.pink,Color.black));
+                    else if (evt.getKeyChar() == 'h'){
+                        figs.add(new Hex(x,y,w,h,Color.pink,Color.black));
                         
                     }
                     try{
@@ -248,7 +172,7 @@ class ListFrame extends JFrame {
         );
 
         this.setTitle("Projeto");
-        this.setSize(400, 400);
+        this.setSize(350, 350);
     }
     public void paint (Graphics g){
         super.paint(g);
@@ -258,7 +182,12 @@ class ListFrame extends JFrame {
                 focus.desenharBorda(g);
             }
             fig.paint(g);
-        }     
-    }    
+        }
+        
+        
+    
+    }
+
+    
 }
 
