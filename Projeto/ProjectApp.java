@@ -121,7 +121,7 @@ class Frame extends JFrame{
                     	if(colorPaintAux >= 12) {
                     		colorPaintAux = 0;
                     	}
-                    } else if(evt.getKeyChar() == 'C'){
+                    } else if(evt.getKeyChar() == 'p'){
                     	Ffocus.setBorder(colors[colorPaintAux]);
                     	colorPaintAux += 1;
                     	if(colorPaintAux >= 12) {
