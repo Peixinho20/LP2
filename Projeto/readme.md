@@ -23,3 +23,4 @@ Para usar esse projeto, temos esses comandos via teclado:
 Além de poder usar o mouse para arrastar a figura em destaque.
 
 Divirta-se! =)
+  

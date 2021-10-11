@@ -1,38 +1,24 @@
 package figures;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Polygon;
+import java.awt.*;
 
-public class Triangle extends Figure{
-	public Polygon polygon;
-
-	public Triangle (int x, int y, int w, int h, Color border, Color fill){
-		super(x,y,w,h,border,fill);
+public class Triangle extends Figure {
+    public Triangle(int x,int y,int w,int h,Color preencheCor,Color corBorda) {
+        super(x,y,w,h,preencheCor,corBorda);
     }
 
-    public void paint(Graphics g, boolean focused){
-    	
-    	int x_array[] = {this.getX(), this.getX() + this.getW()/2, this.getX() + this.getW()};
-        int y_array[] = {this.getY() + this.getH(), this.getY(), this.getY() + this.getH()};
-        Polygon polygon = new Polygon(x_array, y_array, 3);
-        this.polygon = polygon;
-        
-        Color Cfocus;
-    	if(focused == true) {
-    		Cfocus = Color.red;
-    	}
-    	else {
-    		Cfocus = new Color(0,0,0,0);
-    	}
-        
+    public void Print() {
+        System.out.format("Triangulo de vertices (%d, %d), (%d, %d) e (%d, %d).\n",
+            this.x, this.y, this.w, this.h);
+    }
+
+    public void paint (Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g.setColor(this.getBorder());
-        g2d.drawPolygon(this.polygon);
-        g.setColor(this.getFill());
-        g2d.fillPolygon(this.polygon);
-        g.setColor(Cfocus);
-        g2d.drawPolygon(this.polygon);
+        int x1[] = {this.x, ((this.w)/2) + (this.x), (this.w) + (this.x)};
+        int y1[] = {this.y + h, (this.y + h) - (this.h), this.y + h};
+        g2d.setColor(this.preencheCor);
+        g2d.fillPolygon(x1, y1, 3); 
+        g2d.setColor(this.corBorda);
+        g2d.drawPolygon(x1, y1, 3);
     }
 }

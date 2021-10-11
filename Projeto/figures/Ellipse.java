@@ -1,30 +1,24 @@
 package figures;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.geom.Ellipse2D;
-import java.awt.Color;
+import java.awt.geom.Ellipse2D.Double;
 
-
-public class Ellipse extends Figure{
-	public Ellipse (int x, int y, int w, int h, Color border, Color fill){
-    	super(x,y,w,h,border,fill);
+public class Ellipse extends Figure {
+    public Ellipse (int x, int y, int w, int h,Color corBorda, Color preencheCor ) {
+        super(x,y,w,h,preencheCor,corBorda);
     }
 
-    public void paint(Graphics g, boolean focused){
-    	Color Cfocus;
-    	if(focused == true) {
-    		Cfocus = Color.red;
-    	}
-    	else {
-    		Cfocus = new Color(0,0,0,0);
-    	}
+    public void print () {
+        System.out.format("Elipse de tamanho (%d,%d) na posicao (%d,%d).\n",
+            this.w, this.h, this.x, this.y);
+    }
+
+    public void paint (Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g.setColor(this.getBorder());
-        g2d.draw(new Ellipse2D.Double(this.getX(),this.getY(),this.getW(),this.getH()));
-        g.setColor(this.getFill());
-        g2d.fill(new Ellipse2D.Double(this.getX(),this.getY(),this.getW(),this.getH()));
-        g.setColor(Cfocus);
-        g2d.draw(new Ellipse2D.Double(this.getX() - 1, this.getY() - 1, this.getW() + 2, this.getH() + 2));
+        g2d.setColor(this.preencheCor);
+        g2d.fillOval(this.x,this.y, this.w,this.h);
+        g2d.setColor(this.corBorda);
+        g2d.draw(new Ellipse2D.Double(this.x,this.y, this.w,this.h));
     }
 }
