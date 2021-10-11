@@ -16,7 +16,6 @@ Para usar esse projeto, temos esses comandos via teclado:
 '←'  =  move a figura em foco para a esquerda.
 '→'  =  move a figura em foco para a direta.
 '↓'  =  move a figura em foco para baixo.
-'space'  =  muda a figura em foco.
 'delete'  =  deleta a figura em foco.
 'back space'  =  deleta a figura em foco.
 
