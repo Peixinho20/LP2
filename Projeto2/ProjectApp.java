@@ -1,12 +1,9 @@
+import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.Color;
-import java.awt.event.MouseEvent;
 import javax.swing.*;
-import javax.swing.JFrame;
 import java.util.ArrayList;
-import javax.swing.JPanel;
-import java.awt.Toolkit;
+import java.util.Random;//novo
 import figures.*;
 
 class ProjectApp {
