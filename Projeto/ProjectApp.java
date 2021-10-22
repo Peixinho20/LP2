@@ -22,18 +22,22 @@ class ListFrame extends JFrame { //listas de figuras ativas
     ListFrame () {
         this.addWindowListener ( //adcionar ouvinte de janela
             new WindowAdapter() {
-                public void windowClosing (WindowEvent e) {
+                public void windowClosing (WindowEvent e) {//evento de fechar a janela
                     System.exit(0);
                 }
             }
         );
         this.addMouseMotionListener(
-        	public void mousePressed (MouseEvent evt){
+        	new MouseMotionAdapter() {
+        		public void mousePressed (MouseEvent evt){ //evento de pressionar um objeto
+        		}
         	}
         );
         
         this.addMouseMotionListener(
-        	public void mouseDragged (MouseEvent evt){
+        	new MouseMotionAdapter() {
+        		public void mouseDragged (MouseEvent evt){
+        		}
         	}
         );
 
@@ -63,7 +67,7 @@ class ListFrame extends JFrame { //listas de figuras ativas
         this.setSize(350, 350);
     }
 
-    public void paint (Graphics g) { //redesnhar as figuras
+    public void paint (Graphics g) { //redesenhar as figuras
         super.paint(g);
         for (Figure fig: this.figs) {
             fig.paint(g);

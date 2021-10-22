@@ -6,7 +6,7 @@ public class Triangle extends Figure {
     public Triangle(int x,int y,int w,int h) {
         super(x,y,w,h);
     }
-    //public Polygon polygon;
+    public Polygon polygon;
 
     public void print() {
         System.out.format("Triangulo de vertices (%d, %d), (%d, %d) e (%d, %d).\n",
