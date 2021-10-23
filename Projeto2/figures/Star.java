@@ -3,8 +3,8 @@ package figures;
 import java.awt.*;
 
 public class Star extends Figure{
-	public Star(int x,int y,int w,int h,Color preencheCor,Color corBorda){
-		super(x,y,w,h,preencheCor,corBorda);
+	public Star(int x,int y,int w,int h/*,Color preencheCor,Color corBorda*/){
+		super(x,y,w,h/*,preencheCor,corBorda*/);
 	}
 	public void paint (Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
@@ -30,9 +30,9 @@ public class Star extends Figure{
         this.y + this.h, 
         this.y + (int)(6 * this.h/10)};
         
-        g2d.setColor(this.preencheCor);
-        g2d.fillPolygon(x1, y1, 10); 
-        g2d.setColor(this.corBorda);
+        //g2d.setColor(this.preencheCor);
+        //g2d.fillPolygon(x1, y1, 10); 
+        //g2d.setColor(this.corBorda);
         g2d.drawPolygon(x1, y1, 10);
     }
 
