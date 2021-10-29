@@ -3,8 +3,9 @@ package figures;
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import ivisible.IVisible;
 
-public abstract class Figure /*implements IVisible*/ {
+public abstract class Figure implements IVisible {
     public int x,y,w,h;
     public Color preencheCor;
     public Color corBorda;
