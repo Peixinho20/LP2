@@ -7,7 +7,7 @@ public class Triangle extends Figure {
         super(x,y,w,h,preencheCor,corBorda);
     }
 
-    public void Print() {
+    private void Print() {
         System.out.format("Triangulo de vertices (%d, %d), (%d, %d) e (%d, %d).\n",
             this.x, this.y, this.w, this.h);
     }

@@ -7,7 +7,7 @@ public class Rect extends Figure{
         super(x,y,w,h,preencheCor,corBorda);
     }
 
-    public void print () {
+    private void print () {
         System.out.format("Retangulo de tamanho (%d,%d) na posicao (%d,%d).\n",
             this.w, this.h, this.x, this.y);
     }
@@ -18,8 +18,5 @@ public class Rect extends Figure{
         g2d.fillRect(this.x,this.y,this.w,this.h);
         g2d.setColor(this.corBorda);
         g2d.drawRect(this.x,this.y, this.w,this.h);
-
-
-
     }
 }

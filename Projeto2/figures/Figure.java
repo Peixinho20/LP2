@@ -7,11 +7,11 @@ import ivisible.IVisible;
 
 public abstract class Figure implements IVisible {
     public int x,y,w,h;
-    public Color preencheCor;
-    public Color corBorda;
+    protected Color preencheCor;
+    protected Color corBorda;
     public abstract void paint (Graphics g);
 
-    public Figure(int x,int y,int w,int h,Color preencheCor,Color corBorda){
+    protected Figure(int x,int y,int w,int h,Color preencheCor,Color corBorda){
         this.x=x;
         this.y=y;
         this.w=w;

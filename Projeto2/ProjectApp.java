@@ -6,11 +6,10 @@ import java.util.ArrayList;
 import java.util.Random;//novo
 import figures.*;
 
-class ProjectApp {
+public class ProjectApp {
     public static void main (String[] args) {
         ListFrame frame = new ListFrame();
-        frame.setVisible(true);
-        
+        frame.setVisible(true);        
     }
 }
 
@@ -84,21 +83,16 @@ class ListFrame extends JFrame {
                         
                     if (evt.getKeyChar() == 'r') {
                         Rect r = new Rect(x,y, w,h,Color.red,Color.black);
-                        figs.add(r);
-
-                        
+                        figs.add(r);  
                     }
                     else if (evt.getKeyChar() == 'e') {
-                        figs.add(new Ellipse(x,y,w,h,Color.blue,Color.yellow));
-                       
+                        figs.add(new Ellipse(x,y,w,h,Color.blue,Color.yellow));   
                     }
                     else if (evt.getKeyChar() == 't'){
-                        figs.add(new Triangle(x,y,w,h,Color.green,Color.black));
-                        
+                        figs.add(new Triangle(x,y,w,h,Color.green,Color.black));   
                     }
                     else if (evt.getKeyChar() == 's'){
-                        figs.add(new Star(x,y,w,h,Color.pink,Color.black));
-                        
+                        figs.add(new Star(x,y,w,h,Color.pink,Color.black));   
                     }
                     try{
                         if (evt.getKeyCode() == 10){
@@ -110,15 +104,11 @@ class ListFrame extends JFrame {
                                     break;
                                 }
                                 repaint();
-                            
-
-                            }
-                            
+                            }   
                         }
                         else if(evt.getKeyCode() == 127){
                             figs.remove(focus);
                             focus=null;
-
                         }
                         else if(evt.getKeyCode() == 38){
                             focus.y-=10;
@@ -179,11 +169,6 @@ class ListFrame extends JFrame {
                 focus.desenharBorda(g);
             }
             fig.paint(g);
-        }
-        
-        
-    
-    }
-
-    
+        }                    
+    }    
 }
