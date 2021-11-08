@@ -3,8 +3,10 @@
 
 
 typedef struct {
-	int x, y;
-    int w, h;
+	int x;
+	int y;
+	int w;
+	int h;
 } Rect;
 
 void rect_print (Rect* this) {
@@ -17,7 +19,7 @@ void rect_drag(Rect* this, int dx, int dy){
 }
 
 Rect* rect_new (int x, int y, int w, int h) {
-    Rect*   this  = malloc(sizeof(Rect));
+    Rect* this  = malloc(sizeof(Rect));
     this->x = x;
     this->y = y;
     this->w = w;
