@@ -12,7 +12,7 @@ public class Rect extends Figure{
             this.w, this.h, this.x, this.y);
     }
 
-    public void paint (Graphics g) {
+    public /*abstract*/ void paint (Graphics g, boolean focused) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(this.preencheCor);
         g2d.fillRect(this.x,this.y,this.w,this.h);

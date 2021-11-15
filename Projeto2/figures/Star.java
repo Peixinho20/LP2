@@ -6,7 +6,7 @@ public class Star extends Figure{
 	public Star(int x,int y,int w,int h,Color preencheCor,Color corBorda){
 		super(x,y,w,h,preencheCor,corBorda);
 	}
-	public void paint (Graphics g) {
+	public /*abstract*/  void paint (Graphics g, boolean focused) {
         Graphics2D g2d = (Graphics2D) g;
         int x[] = {this.x,
          this.x + (2 * this.w/5), 

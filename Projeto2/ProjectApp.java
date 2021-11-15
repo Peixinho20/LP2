@@ -3,8 +3,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Random;//novo
+import java.util.Random;
 import figures.*;
+import button.*;
+import button.Button;
 
 public class ProjectApp {
     public static void main (String[] args) {
@@ -14,19 +16,50 @@ public class ProjectApp {
 }
 
 class ListFrame extends JFrame {
+	public static final long serialVersionUID = 1L;
+
     ArrayList<Figure> figs = new ArrayList<Figure>();
+    ArrayList<Button> buts = new ArrayList<Button>();
+    
     Figure focus = null;
+    Button Bfocus = null; //botão selecionado
     Point pMouse = null;
 
     int dx,dy;
     int contcontorno=1;
     int contpreenchimento=0;
+    
     Color cores[] = {Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.MAGENTA, Color.CYAN, Color.WHITE, Color.BLACK, Color.GRAY, Color.LIGHT_GRAY, Color.DARK_GRAY, Color.PINK, Color.ORANGE};
 
+@SuppressWarnings("unchecked")
+
     ListFrame () {
+    	try {
+    		FileInputStream f = new FileInputStream("proj.bin");
+    		ObjectInputStream o = new ObjectInputStream(f);
+    		this.figs = (ArrayList<Figure>) o.readObject();
+    		o.close();
+    		
+    	} catch (Exception x) {
+    		System.out.println("ERRO!");
+    	}
+    	buts.add(new Button(0, new Rect(40,60,30,30,Color.black,Color.gray)));
+        buts.add(new Button(1, new Ellipse(40, 115, 30, 30,Color.black,Color.gray)));
+        buts.add(new Button(2, new Triangle(40, 170, 30, 30,Color.black,Color.gray)));
+        buts.add(new Button(3, new Star(40, 240, 15,30,Color.black,Color.gray)));
+    
         this.addWindowListener (
             new WindowAdapter() {
                 public void windowClosing (WindowEvent e) {
+                	try {
+                		FileOutputStream f = new FileOutputStream("proj.bin");
+                		ObjectOutputStream o = new ObjectOutputStream(f);
+                		o.writeObject(figs);
+                		o.flush();
+                		o.close();
+                		
+                	} catch (Exception x){                		
+                	}                	
                     System.exit(0);
                 }
             }
@@ -34,6 +67,7 @@ class ListFrame extends JFrame {
         this.addMouseListener(
             new MouseAdapter(){
                 public void mousePressed(MouseEvent evt){
+                	pMouse = getMousePosition();
                     try{
                         int x = evt.getX();
                         int y = evt.getY();
@@ -46,7 +80,33 @@ class ListFrame extends JFrame {
                                 dy = focus.y - pMouse.y;
                             }
                         }
-                        if (focus!=null){
+                        boolean auxClick = false;
+                        for(Button but: buts){
+                        	if(but.clicked(pMouse.x,pMouse.y)){
+                        		Bfocus = null;
+                        		
+                        		repaint();
+	    						auxClick = true;
+                        	}
+                        }
+                      	if(Bfocus != null && !(Bfocus.clicked(pMouse.x,pMouse.y))) {
+						if(Bfocus.getIndice() == 0) {
+							figs.add(new Rect(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
+						}
+						if(Bfocus.getIndice() == 1) {
+							figs.add(new Ellipse(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
+						}
+						
+						if(Bfocus.getIndice() == 2) {
+							figs.add(new Triangle(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
+						}
+						
+						if(Bfocus.getIndice() == 3) {
+							figs.add(new Star(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
+						}
+        			}
+                      	
+                        if (focus!=null){ //adicionar e remover figura na posição do mouse
                             figs.remove(focus);
                             figs.add(focus);
                         }
@@ -57,8 +117,8 @@ class ListFrame extends JFrame {
             }
         );
         this.addMouseMotionListener(
-            new MouseMotionAdapter() {
-                public void mouseDragged(MouseEvent me) {
+            new MouseMotionAdapter() {        	           
+                public void mouseDragged(MouseEvent me) {//Arrastar figuras
                     pMouse = getMousePosition();
                     if (focus != null) {
                         figs.remove(focus);
@@ -80,7 +140,7 @@ class ListFrame extends JFrame {
                     int h = 50;
                     Color contorno = cores[contcontorno];
                     Color preenchimento = cores[contpreenchimento];
-                        
+                    //linha 103   
                     if (evt.getKeyChar() == 'r') {
                         Rect r = new Rect(x,y, w,h,Color.red,Color.black);
                         figs.add(r);  
@@ -94,7 +154,7 @@ class ListFrame extends JFrame {
                     else if (evt.getKeyChar() == 's'){
                         figs.add(new Star(x,y,w,h,Color.pink,Color.black));   
                     }
-                    try{
+                    try{//Adicionar e remover figuras
                         if (evt.getKeyCode() == 10){
                             for( Figure fig: figs){
                                 if ((focus == null) || (focus!=null)){
@@ -122,6 +182,7 @@ class ListFrame extends JFrame {
                         else if(evt.getKeyCode() == 39){
                             focus.x+=10;
                         }
+                        //Evento de aumentar e diminuir figuras
                         else if (evt.getKeyChar()=='a'){
                             focus.w+=5;
                             focus.h+=5;
@@ -132,6 +193,7 @@ class ListFrame extends JFrame {
                                 focus.h-=5;
                             }
                         }
+                        //colorir figuras
                         else if(evt.getKeyChar()=='c'){
                             if (contcontorno==12){
                                 contcontorno=0;
@@ -150,7 +212,6 @@ class ListFrame extends JFrame {
                                 contpreenchimento++;
                             }
                             focus.preenchimento=cores[contpreenchimento];
-
                         }
                         repaint();    
                     }catch(Exception e){}
@@ -168,7 +229,10 @@ class ListFrame extends JFrame {
                 focus.preencherFig(g);
                 focus.desenharBorda(g);
             }
-            fig.paint(g);
+            fig.paint(g, fig == focus);
+        }
+        for (Button but: this.buts){
+        	but.paint(g, but == Bfocus);
         }                    
     }    
 }

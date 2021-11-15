@@ -9,12 +9,12 @@ public class Ellipse extends Figure {
         super(x,y,w,h,preencheCor,corBorda);
     }
 
-    private void print () { //private 
+    private void print () {
         System.out.format("Elipse de tamanho (%d,%d) na posicao (%d,%d).\n",
             this.w, this.h, this.x, this.y);
     }
 
-    public void paint (Graphics g) {
+    public void paint (Graphics g, boolean focused) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(this.preencheCor);
         g2d.fillOval(this.x,this.y, this.w,this.h);
