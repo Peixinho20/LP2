@@ -84,7 +84,7 @@ class ListFrame extends JFrame {
                                 dy = focus.y - pMouse.y;
                             }
                         } 
-                        //boolean auxClick = false;
+                        
                         for(Button but: buts){
                         	if(but.clicked(pMouse.x,pMouse.y)){
                         		Bfocus = but;
@@ -95,33 +95,27 @@ class ListFrame extends JFrame {
                         }
                       	if(Bfocus != null && !(Bfocus.clicked(pMouse.x,pMouse.y))) {
 							if(Bfocus.getIndice() == 0) {
-								focus = new Rect(pMouse.x,pMouse.y, 40,30, Color.red,Color.black);								
+								focus = new Rect(pMouse.x,pMouse.y,40,40, Color.red,Color.black);								
 								figs.add(focus);
+								
 							}
 							if(Bfocus.getIndice() == 1) {
-								figs.add(new Ellipse(pMouse.x,pMouse.y, 40,30, Color.blue,Color.yellow));
+								focus = new Ellipse(pMouse.x,pMouse.y,40,40, Color.blue,Color.yellow);
+								figs.add(focus);	
 							}
 							
 							if(Bfocus.getIndice() == 2) {
-								figs.add(new Triangle(pMouse.x,pMouse.y, 40,30, Color.green,Color.black));
+								focus = new Triangle(pMouse.x,pMouse.y,40,40,Color.green,Color.black);
+								figs.add(focus);
 							}
 							
 							if(Bfocus.getIndice() == 3) {
-								figs.add(new Star(pMouse.x,pMouse.y, 40,30, Color.pink,Color.black));
+								focus = new Star(pMouse.x,pMouse.y,40,40,Color.pink,Color.black);
+								figs.add(focus);
 							}
+							Bfocus = null; //me permite clicar sem add figuras
         				}
-        				/*
-        				if (auxClik == false){
-        					pMouse = getMousePosition();
-        					int x = pMouse.x;
-                    		int y = pMouse.y;
-                    		int w = 50;
-                    		int h = 50;
-                    		
-                    		if (Bfocus.get){
-                    		
-                    		}
-        				}*/                     	
+        				                   	
                         if (focus!=null){ //adicionar e remover figura na posição do mouse
                             figs.remove(focus);
                             figs.add(focus);
@@ -156,7 +150,7 @@ class ListFrame extends JFrame {
                     int h = 50;
                     Color contorno = cores[contcontorno];
                     Color preenchimento = cores[contpreenchimento];
-                    //linha 103   
+                      
                     if (evt.getKeyChar() == 'r') {
                         Rect r = new Rect(x,y, w,h,Color.red,Color.black);
                         figs.add(r);  
