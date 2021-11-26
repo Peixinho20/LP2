@@ -20,10 +20,11 @@ class ListFrame extends JFrame {
 
     ArrayList<Figure> figs = new ArrayList<Figure>();
     ArrayList<Button> buts = new ArrayList<Button>();
-    
+    Random rand = new Random();
     Figure focus = null;
     Button Bfocus = null; //botão selecionado
     Point pMouse = null;
+    boolean auxClick = false;
 
     int dx,dy;
     int contcontorno=1;
@@ -43,10 +44,10 @@ class ListFrame extends JFrame {
     	} catch (Exception x) {
     		System.out.println("ERRO!");
     	}
-    	buts.add(new Button(0, new Rect(40,60,30,30,Color.black,Color.gray)));
-        buts.add(new Button(1, new Ellipse(40, 115, 30, 30,Color.black,Color.gray)));
-        buts.add(new Button(2, new Triangle(40, 170, 30, 30,Color.black,Color.gray)));
-        buts.add(new Button(3, new Star(40, 240, 15,30,Color.black,Color.gray)));
+    	buts.add(new Button(0, new Rect(40,60,30,30,Color.white,Color.black)));
+        buts.add(new Button(1, new Ellipse(40, 115, 30, 30,Color.black,Color.white)));
+        buts.add(new Button(2, new Triangle(40, 170, 30, 30,Color.white,Color.black)));
+        buts.add(new Button(3, new Star(40, 240, 15,30,Color.white,Color.black)));
     
         this.addWindowListener (
             new WindowAdapter() {
@@ -68,43 +69,46 @@ class ListFrame extends JFrame {
             new MouseAdapter(){
                 public void mousePressed(MouseEvent evt){
                 	pMouse = getMousePosition();
+                	focus = null;
+                	
                     try{
                         int x = evt.getX();
                         int y = evt.getY();
                         pMouse = getMousePosition();
                         focus = null;
+                        
                         for (Figure fig: figs){
                             if (fig.clicked(pMouse.x,pMouse.y)){
                                 focus = fig;
                                 dx = focus.x - pMouse.x;
                                 dy = focus.y - pMouse.y;
                             }
-                        }
-                        boolean auxClick = false;
+                        } 
+                        //boolean auxClick = false; dia 26/11
                         for(Button but: buts){
                         	if(but.clicked(pMouse.x,pMouse.y)){
-                        		Bfocus = null;
+                        		Bfocus = but;
                         		
                         		repaint();
 	    						auxClick = true;
                         	}
                         }
                       	if(Bfocus != null && !(Bfocus.clicked(pMouse.x,pMouse.y))) {
-						if(Bfocus.getIndice() == 0) {
-							figs.add(new Rect(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
-						}
-						if(Bfocus.getIndice() == 1) {
-							figs.add(new Ellipse(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
-						}
-						
-						if(Bfocus.getIndice() == 2) {
-							figs.add(new Triangle(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
-						}
-						
-						if(Bfocus.getIndice() == 3) {
-							figs.add(new Star(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
-						}
-        			}
+							if(Bfocus.getIndice() == 0) {
+								figs.add(new Rect(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
+							}
+							if(Bfocus.getIndice() == 1) {
+								figs.add(new Ellipse(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
+							}
+							
+							if(Bfocus.getIndice() == 2) {
+								figs.add(new Triangle(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
+							}
+							
+							if(Bfocus.getIndice() == 3) {
+								figs.add(new Star(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
+							}
+        				}
                       	
                         if (focus!=null){ //adicionar e remover figura na posição do mouse
                             figs.remove(focus);
