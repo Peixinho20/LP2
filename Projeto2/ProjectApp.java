@@ -45,9 +45,9 @@ class ListFrame extends JFrame {
     		System.out.println("ERRO!");
     	}
     	buts.add(new Button(0, new Rect(40,60,30,30,Color.white,Color.black)));
-        buts.add(new Button(1, new Ellipse(40, 115, 30, 30,Color.black,Color.white)));
-        buts.add(new Button(2, new Triangle(40, 170, 30, 30,Color.white,Color.black)));
-        buts.add(new Button(3, new Star(40, 240, 15,30,Color.white,Color.black)));
+        buts.add(new Button(1, new Ellipse(40, 115, 30, 30, Color.black,Color.white)));
+        buts.add(new Button(2, new Triangle(40, 170, 30, 30, Color.white,Color.black)));
+        buts.add(new Button(3, new Star(40, 220, 30,30,Color.white,Color.black)));
     
         this.addWindowListener (
             new WindowAdapter() {
@@ -84,7 +84,7 @@ class ListFrame extends JFrame {
                                 dy = focus.y - pMouse.y;
                             }
                         } 
-                        //boolean auxClick = false; dia 26/11
+                        //boolean auxClick = false;
                         for(Button but: buts){
                         	if(but.clicked(pMouse.x,pMouse.y)){
                         		Bfocus = but;
@@ -95,21 +95,33 @@ class ListFrame extends JFrame {
                         }
                       	if(Bfocus != null && !(Bfocus.clicked(pMouse.x,pMouse.y))) {
 							if(Bfocus.getIndice() == 0) {
-								figs.add(new Rect(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
+								focus = new Rect(pMouse.x,pMouse.y, 40,30, Color.red,Color.black);								
+								figs.add(focus);
 							}
 							if(Bfocus.getIndice() == 1) {
-								figs.add(new Ellipse(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
+								figs.add(new Ellipse(pMouse.x,pMouse.y, 40,30, Color.blue,Color.yellow));
 							}
 							
 							if(Bfocus.getIndice() == 2) {
-								figs.add(new Triangle(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
+								figs.add(new Triangle(pMouse.x,pMouse.y, 40,30, Color.green,Color.black));
 							}
 							
 							if(Bfocus.getIndice() == 3) {
-								figs.add(new Star(pMouse.x,pMouse.y, 30,30, Color.BLACK,Color.WHITE));
+								figs.add(new Star(pMouse.x,pMouse.y, 40,30, Color.pink,Color.black));
 							}
         				}
-                      	
+        				/*
+        				if (auxClik == false){
+        					pMouse = getMousePosition();
+        					int x = pMouse.x;
+                    		int y = pMouse.y;
+                    		int w = 50;
+                    		int h = 50;
+                    		
+                    		if (Bfocus.get){
+                    		
+                    		}
+        				}*/                     	
                         if (focus!=null){ //adicionar e remover figura na posição do mouse
                             figs.remove(focus);
                             figs.add(focus);
@@ -157,6 +169,9 @@ class ListFrame extends JFrame {
                     }
                     else if (evt.getKeyChar() == 's'){
                         figs.add(new Star(x,y,w,h,Color.pink,Color.black));   
+                    }
+                    else if(evt.getKeyCode() == KeyEvent.VK_DELETE || evt.getKeyCode() == KeyEvent.VK_BACK_SPACE){
+                    	figs.remove(focus);
                     }
                     try{//Adicionar e remover figuras
                         if (evt.getKeyCode() == 10){
