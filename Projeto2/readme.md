@@ -1,6 +1,6 @@
 Editor gráfico vetorial
 
-Esse projeto mostra figuras planas (retangulo, elipse, triângulo e estrela) com cores de contorno e fundo na tela.
+Esse projeto mostra figuras planas (retangulo, elipse, triângulo e estrela) com cores de contorno e fundo na tela além de um menu para criação de figuras.
 Para usar esse projeto, temos esses comandos via teclado:
 
 'r'  =  cria um retângulo na tela.
